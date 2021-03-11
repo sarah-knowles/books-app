@@ -78,7 +78,7 @@ class App extends Component {
   }
 
   deleteBook(id) {
-    axios.get('http://localhost:3000/books' + id).then((response) => {
+    axios.delete('http://localhost:3000/books' + id).then((response) => {
       this._refreshBooks();
     });
   }
@@ -99,7 +99,7 @@ class App extends Component {
           <td>{book.rating}</td>
           <td>
             <Button color='success' size='sm' className='mr-2' onClick={this.editBook.bind(this, book.id, book.title, book.rating, book.author)}>Edit</Button>
-            <Button color='danger' size='sm' className='mr-2'>Delete</Button>
+            <Button color='danger' size='sm' className='mr-2' onClick={this.deleteBook(this, book.id)}>Delete</Button>
           </td>
         </tr>
       )
